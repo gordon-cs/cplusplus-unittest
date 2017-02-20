@@ -24,3 +24,8 @@ TEST(tictactoe, verticalWinner) {
     b.set(2, 0, TictactoeXO::O);
     EXPECT_EQ(TictactoeXO::O, b.winner());
 }
+
+// Dummy test, just to show running 2 tests.
+TEST(tictactoe, dummy) {
+    EXPECT_EQ(1, 1);
+}
