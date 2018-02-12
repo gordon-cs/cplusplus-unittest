@@ -1,7 +1,6 @@
 # cplusplus-unittest
 Example of a simple C++ unit test using the Google Test framework.
-(Read the [Primer]
-(https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
+(Read the [Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
 for help writing unit tests.)
 
 The repo https://github.com/google/googletest must be cloned in the same
