@@ -12,3 +12,8 @@ After cloning https://github.com/google/googletest, build it with these
 commands:
 * cd googletest/googletest/make
 * make
+
+Note for Cygwin users (on Windows): If you get compiler errors 
+(perhaps including "error: 'fileno' was not declared in this scope"), 
+try editing googletest/googletest/make/Makefile and changing "-std=c++11"
+to "-std=g++11".  Then run "make" again.
