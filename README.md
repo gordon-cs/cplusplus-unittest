@@ -13,7 +13,26 @@ commands:
 * cd googletest/googletest/make
 * make
 
-Note for Cygwin users (on Windows): If you get compiler errors 
+For Mac and Linux users, that's it.
+
+**Note for Cygwin users (on Windows):** If you get compiler errors 
 (perhaps including "error: 'fileno' was not declared in this scope"), 
 try editing googletest/googletest/make/Makefile and changing "-std=c++11"
 to "-std=g++11".  Then run "make" again.
+
+**Note for Windows Subsystem for Linux (WSL) users:** In googletest/googeltest/make/Makefile, make the following changes:
+* Add "gtest.a gtest_main.a" to lines 47 and 50
+```
+all: $(GTEST_LIBS) $(TESTS) gtest.a gtest_main.a
+
+clean:
+        rm -f $(GTEST_LIBS) $(TESTS) gtest.a gtest_main.a *.o
+```
+* Add this stuff after "gtest_main.o" (approximately line 69 or 70)
+```
+gtest.a: gtest-all.o
+        $(AR) $(ARFLAGS) $@ $^
+
+gtest_main.a: gtest-all.o gtest_main.o
+        $(AR) $(ARFLAGS) $@ $^
+```
