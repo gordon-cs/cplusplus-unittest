@@ -1,12 +1,16 @@
 # cplusplus-unittest
-Example of a simple C++ unit test using the Google Test framework.
-(Read the [Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
-for help writing unit tests.)
+Example of a simple C++ unit test using the Google Test framework.  
+
+You'll also want to read the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
+for help writing your own unit tests.
+
+## Setup
 
 The repo https://github.com/google/googletest must be cloned in the same
 parent directory as this repo is cloned.  That is, this repo assumes
-Google Test is present as ../googletest.  If it's somewhere else, just
-change the first line of Makefile.
+Google Test is present as ../googletest.  
+That's important, because one repo should not contain another. 
+So don't clone googletest into your own repo.
 
 After cloning https://github.com/google/googletest, build it with these 
 commands:
@@ -36,3 +40,6 @@ gtest.a: gtest-all.o
 gtest_main.a: gtest-all.o gtest_main.o
         $(AR) $(ARFLAGS) $@ $^
 ```
+
+## Advanced Use
+You probably won't need to consult it, but there is also lengthy [advanced Google Test documentation](https://github.com/google/googletest/blob/master/googletest/docs/advanced.md).  One useful topic is [how to run just some of the tests](https://github.com/google/googletest/blob/master/googletest/docs/advanced.md#running-test-programs-advanced-options).
