@@ -24,6 +24,10 @@ For Mac and Linux users, that's it.
 try editing googletest/googletest/make/Makefile and changing "-std=c++11"
 to "-std=g++11".  Then run "make" again.
 
+You might need to use "-std=gnu++11" instead.  If make finishes without errors in googletest, 
+but you get errors about "fileno" when linking your own code, 
+try changing "-std=c++11" to "-std=gnu++11" in your own Makefile, too.
+
 **Note for Windows Subsystem for Linux (WSL) users:** In googletest/googeltest/make/Makefile, make the following changes:
 * Add "gtest.a gtest_main.a" to lines 47 and 50
 ```
