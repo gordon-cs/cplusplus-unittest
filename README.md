@@ -13,6 +13,7 @@ Then put it in your path.  On a Mac, add the following line to the end of ~/.bas
 * PATH="${PATH}:/Applications/CMake.app/Contents/bin"
 and then open a new terminal window so this change takes effect. If it worked
 * which cmake
+
 should print something (the path to cmake).
 
 Now clone the repo https://github.com/google/googletest the same
@@ -26,8 +27,10 @@ Now build googletest.  Assuming googletest is in the current directory, do these
 * mkdir make
 * cd make
 * cmake ..
+
 Then edit "Makefile" and add this line at the very beginning (right before the warning not to edit the file :-):
 * CXXFLAGS = -std=c++11
+
 Finally, run
 * make
 
