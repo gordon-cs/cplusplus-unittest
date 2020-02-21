@@ -12,8 +12,11 @@ Google Test is present as ../googletest.
 That's important, because one repo should not contain another. 
 So don't clone googletest into your own repo.
 
-After cloning https://github.com/google/googletest, build it with these 
-commands:
+The latest versions of googletest have build and link issues. (I can't get
+them to work.)  Fortunately, older versions are still fine to use.
+So, after cloning https://github.com/google/googletest, check out a working
+version and build it with these commands:
+* git checkout 8b6d3f9c4a774bef3081195d422993323b6bb2e0
 * cd googletest/googletest/make
 * make
 
