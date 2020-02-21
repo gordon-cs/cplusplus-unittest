@@ -26,10 +26,7 @@ Now build googletest.  Assuming googletest is in the current directory, do these
 * cd googletest/googletest
 * mkdir make
 * cd make
-* cmake ..
-
-Then edit "Makefile" and add this line at the very beginning (right before the warning not to edit the file :-):
-* CXXFLAGS = -std=c++11
+* cmake -DCMAKE_CXX_FLAGS=-std=c++11 ..
 
 Finally, run
 * make
