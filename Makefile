@@ -3,7 +3,9 @@ GTEST_MAIN = $(GTEST_ROOT)/make/libgtest_main.a
 
 CPPFLAGS = -I $(GTEST_ROOT)/include
 
-# Tictactoe uses C++ 2011.  Compile for debugging (-g) with warnings.
+# Compiler options:
+#   Tictactoe and Googletest use C++ 2011.  
+#   Compile for debugging (-g), and request warnings.
 CXXFLAGS = -std=c++11 -g -Wall -Wextra
 
 # Build and run unit tests
