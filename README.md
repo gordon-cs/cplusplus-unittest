@@ -5,9 +5,12 @@ You'll also want to read the [Google Test Primer](https://github.com/google/goog
 for help writing your own unit tests.
 
 ## Setup
+On Gordon's Linux workstations, googletest is already set up.  Use this
+path in your Makefile:
+* GTEST_ROOT = /gc/cps222/googletest
 
-The repo https://github.com/google/googletest must be cloned in the same
-parent directory as this repo is cloned.  That is, this repo assumes
+Otherwise, the repo https://github.com/google/googletest must be cloned in 
+the same parent directory as this repo is cloned.  That is, this repo assumes
 Google Test is present as ../googletest.  
 That's important, because one repo should not contain another. 
 So don't clone googletest into your own repo.
