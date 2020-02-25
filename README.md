@@ -7,7 +7,7 @@ for help writing your own unit tests.
 ## Setup Googletest
 On Gordon's Linux workstations, googletest is already set up.  Use this
 path in your Makefile:
-* GTEST_ROOT = /gc/cps222/googletest
+* GTEST_ROOT = /gc/cps222/googletest/googletest
 
 Otherwise, the repo https://github.com/google/googletest must be cloned in 
 the same parent directory as this repo is cloned.  That is, this repo assumes
