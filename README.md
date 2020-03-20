@@ -27,13 +27,20 @@ At this point, the instructions vary slightly by operating system and compiler.
 #### Linux and Mac
 * make
 
-#### Windows, Mingw and Cygwin
+#### Windows with Mingw or Cygwin
 Edit "Makefile" as follows:
 * change "-std=c++11" to "-std=gnu++11" on line 31
 * delete "-pthread" on line 31 and the last line in the file
 
 Now, run
 * make
+
+Note: if you get a compile error about "::OpenThread is not declared",
+try editing "Makefile", finding the line that defines CPPFLAGS, and 
+adding this to the end:
+* -DWINVER=0x0500
+
+(Found this in https://github.com/google/googletest/issues/893)
 
 #### Windows Subsystem for Linux (WSL)
 Edit "Makefile" as follows:
