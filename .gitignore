@@ -28,3 +28,6 @@ tictactoe_test
 
 # Emacs temp files
 *~
+
+# Mac files
+.DS_Store
