@@ -26,6 +26,9 @@ tictactoe_test
 *.out
 *.app
 
+# Bazel
+bazel-*
+
 # Emacs temp files
 *~
 

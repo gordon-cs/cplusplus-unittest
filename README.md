@@ -1,76 +1,41 @@
 # cplusplus-unittest
-Example of a simple C++ unit test using the Google Test framework.  
+Example of a simple C++ unit test using the Google Test framework.
 
-You'll also want to read the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
+You'll also want to read the [Googletest Primer](https://google.github.io/googletest/primer.html)
 for help writing your own unit tests.
 
-## Setup Googletest
-On Gordon's Linux workstations, googletest is already set up.  Use this
-path in your Makefile:
-* GTEST_ROOT = /gc/cps222/googletest/googletest
+## Setup Bazel to build and run tests
+Googletest is probably easiest to use with Bazel,
+which is a build system Google developed and supports.
+While it's a very powerful system, it's more complicated than Make.
+So a goal of this example is to get you started as easily as possible.
 
-Otherwise, the repo https://github.com/google/googletest must be cloned in 
-the same parent directory as this repo is cloned.  That is, this repo assumes
-Google Test is present as ../googletest.  
-That's important, because one repo should not contain another. 
-So don't clone googletest into your own repo.
+1. Install Bazel: Follow [these instructions](https://docs.bazel.build/versions/5.0.0/install.html) for your operating system.  (See note below about the Linux  Lab workstations.)
+1. Clone this repo and cd into it.
+(Special note: be sure that no directory in the path to your repo contains
+a space.  If it does, Bazel will complain with anerror message and quit.)
+1. Run this command:
+        bazel test :all
+    It will download a lot of stuff (over 700MB, including Googletest)
+    the first time (a little like npm install),
+    but should eventually print something like
+        //:hello_test                           PASSED
+        INFO: Build completed successfully, XX total actions
+    If you run it again, it should be very fast.
 
-The latest versions of googletest have build and link issues. (I can't get
-them to work.)  Fortunately, older versions are still fine to use.
-So, after cloning https://github.com/google/googletest, check out a working
-version and build it with these commands:
-* git checkout 8b6d3f9c4a774bef3081195d422993323b6bb2e0
-* cd googletest/googletest/make
+If you have trouble, consult GoogleTest's [Quickstart: Building with Bazel]
+(https://google.github.io/googletest/quickstart-bazel.html).
 
-At this point, the instructions vary slightly by operating system and compiler.
 
-#### Linux and Mac
-* make
+## Compiling and Running Your Own Unit Tests
 
-#### Windows with Mingw or Cygwin
-Edit "Makefile" as follows:
-* change "-std=c++11" to "-std=gnu++11" on line 31
-* delete "-pthread" on line 31 and the last line in the file
+There are two parts to this: building your code with Bazel,
+and writing unit tests.
 
-Now, run
-* make
 
-Note: if you get a compile error about "::OpenThread is not declared",
-try editing "Makefile", finding the line that defines CPPFLAGS, and 
-adding this to the end:
-* -DWINVER=0x0500
-
-(Found this in https://github.com/google/googletest/issues/893)
-
-#### Windows Subsystem for Linux (WSL)
-Edit "Makefile" as follows:
-* Add "gtest.a gtest_main.a" to lines 47 and 50
-```
-all: $(GTEST_LIBS) $(TESTS) gtest.a gtest_main.a
-
-clean:
-        rm -f $(GTEST_LIBS) $(TESTS) gtest.a gtest_main.a *.o
-```
-* Add this stuff after "gtest_main.o" (approximately line 69 or 70)
-```
-gtest.a: gtest-all.o
-        $(AR) $(ARFLAGS) $@ $^
-
-gtest_main.a: gtest-all.o gtest_main.o
-        $(AR) $(ARFLAGS) $@ $^
-```
-
-## Compiling and Running Unit Tests
-On Linux and Mac, just run 
-* make
-
-On Windows with Cygwin or Mingw, edit "Makefile" as follows
-(just like in googletest/make):
-* change "-std=c++11" to "-std=gnu++11"
-*  delete "-pthread" on the last line
-
-Now, run
-* make
 
 ## Advanced Use
-You probably won't need to consult it, but there is also lengthy [advanced Google Test documentation](https://github.com/google/googletest/blob/master/googletest/docs/advanced.md).  One useful topic is [how to run just some of the tests](https://google.github.io/googletest/advanced.html#running-test-programs-advanced-options).
+You won't need to consult it right away, but the
+lengthy [Advanced googletest Topics](https://google.github.io/googletest/advanced.html) explains how to many powerful things.
+One useful topic is [how to run just some of the tests]
+(https://google.github.io/googletest/advanced.html#running-test-programs-advanced-options).
