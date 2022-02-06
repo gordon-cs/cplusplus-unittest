@@ -1,76 +1,96 @@
 # cplusplus-unittest
-Example of a simple C++ unit test using the Google Test framework.  
+This repo is an example of writing and running simple C++ unit tests
+using the Google Test framework.
 
-You'll also want to read the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
-for help writing your own unit tests.
+This README explains how to get started,
+how to build programs with Bazel,
+and how to write unit tests
+(mostly with references to appropriate documentation).
 
-## Setup Googletest
-On Gordon's Linux workstations, googletest is already set up.  Use this
-path in your Makefile:
-* GTEST_ROOT = /gc/cps222/googletest/googletest
+## Setup Bazel to build and run tests
+Googletest is probably easiest to use with Bazel,
+which is a build system Google developed and supports.
+While it's a very powerful system, it's more complicated than Make.
+So a goal of this example is to get you started as easily as possible.
 
-Otherwise, the repo https://github.com/google/googletest must be cloned in 
-the same parent directory as this repo is cloned.  That is, this repo assumes
-Google Test is present as ../googletest.  
-That's important, because one repo should not contain another. 
-So don't clone googletest into your own repo.
+1. Install Bazel: Follow
+[these instructions](https://docs.bazel.build/versions/5.0.0/install.html)
+for your operating system.
 
-The latest versions of googletest have build and link issues. (I can't get
-them to work.)  Fortunately, older versions are still fine to use.
-So, after cloning https://github.com/google/googletest, check out a working
-version and build it with these commands:
-* git checkout 8b6d3f9c4a774bef3081195d422993323b6bb2e0
-* cd googletest/googletest/make
+    * On Windows, consider whether you develop in Windows itself (probably
+      using git-bash), or in WSL.  If you do your coding in WSL,
+      follow the Linux install instructions for Bazel.  There are several
+      options, and I found "Using Bazel's apt repository" worked well.
 
-At this point, the instructions vary slightly by operating system and compiler.
+        If you do your coding in Windows itself, then you can probably skip the
+        "Install the prerequisites," step in the Windows instructions,
+        since you have C++ working already.
+        Also, when you go to the Bazel website, scroll down to the "Latest"
+        version (skipping all the "pre-", or pre-release versions), then
+        keep going to the "Assets" section.  You probably want
+        "bazel-5.0.0-windows-x86_64.exe".
 
-#### Linux and Mac
-* make
+        Note that this file is
+        the actual program, not the installer, which is why the instructions
+        say to rename it and put it in your path.
 
-#### Windows with Mingw or Cygwin
-Edit "Makefile" as follows:
-* change "-std=c++11" to "-std=gnu++11" on line 31
-* delete "-pthread" on line 31 and the last line in the file
+    * On Mac, I recommend the "Homebrew" option.  If you already have
+      Homebrew installed, it's just one command: "brew install bazel".
+      (And if you don't, it's just one command to install homebrew first.)
 
-Now, run
-* make
+    * On the Linux workstations.  I intend to install it, but haven't yet.
+      If you don't want to wait, try the "Using the binary installer"
+      method, because it doesn't require sudo privileges.
 
-Note: if you get a compile error about "::OpenThread is not declared",
-try editing "Makefile", finding the line that defines CPPFLAGS, and 
-adding this to the end:
-* -DWINVER=0x0500
+1. Clone this repo and cd into it.
+(Special note: be sure that no directory in the path to your repo contains
+a space.  If it does, Bazel will complain with anerror message and quit.)
+1. Run this command:
 
-(Found this in https://github.com/google/googletest/issues/893)
+        bazel test :all
 
-#### Windows Subsystem for Linux (WSL)
-Edit "Makefile" as follows:
-* Add "gtest.a gtest_main.a" to lines 47 and 50
-```
-all: $(GTEST_LIBS) $(TESTS) gtest.a gtest_main.a
+    It will download a lot of stuff (over 700MB, including Googletest)
+    the first time (a little like npm install),
+    but should eventually print something like
 
-clean:
-        rm -f $(GTEST_LIBS) $(TESTS) gtest.a gtest_main.a *.o
-```
-* Add this stuff after "gtest_main.o" (approximately line 69 or 70)
-```
-gtest.a: gtest-all.o
-        $(AR) $(ARFLAGS) $@ $^
+        //:hello_test                           PASSED
+        //:tictactoe_test                       PASSED
+        INFO: Build completed successfully, XX total actions
 
-gtest_main.a: gtest-all.o gtest_main.o
-        $(AR) $(ARFLAGS) $@ $^
-```
+    When you run it again, it should be very fast.
+    If you run it again without changing any files,
+    it will print "(cached) PASSED"
+    to indicate that it didn't need to do anything.
 
-## Compiling and Running Unit Tests
-On Linux and Mac, just run 
-* make
+If you have trouble, consult GoogleTest's
+[Quickstart: Building with Bazel](https://google.github.io/googletest/quickstart-bazel.html).
 
-On Windows with Cygwin or Mingw, edit "Makefile" as follows
-(just like in googletest/make):
-* change "-std=c++11" to "-std=gnu++11"
-*  delete "-pthread" on the last line
 
-Now, run
-* make
+## Compiling and Running Your Own Unit Tests
 
-## Advanced Use
-You probably won't need to consult it, but there is also lengthy [advanced Google Test documentation](https://github.com/google/googletest/blob/master/googletest/docs/advanced.md).  One useful topic is [how to run just some of the tests](https://google.github.io/googletest/advanced.html#running-test-programs-advanced-options).
+There are two parts to this: building your code with Bazel,
+and writing unit tests.
+
+### Bazel Rules
+Start by reading this brief [Bazel Overview](https://docs.bazel.build/versions/5.0.0/bazel-overview.html).
+Then look at these
+[example C++ rules](https://github.com/bazelbuild/bazel/blob/master/examples/cpp/BUILD)
+and the BUILD file in this repo to get some practical insight.
+
+That might be all you need to get started.
+But you should read
+[Bazel Tutorial: Build a C++ Project](https://docs.bazel.build/versions/5.0.0/tutorial/cpp.html)
+to get a better understanding for larger projects.  Consult
+[Common C++ Build Use Cases](https://docs.bazel.build/versions/5.0.0/cpp-use-cases.html)
+for more details as you need to do new things.
+
+### Unit Tests
+You can get started by imitating the tests in tictactoe_test.cc,
+but you should also read the
+[Googletest Primer](https://google.github.io/googletest/primer.html).
+
+You won't need to consult it right away, but the lengthy
+[Advanced googletest Topics](https://google.github.io/googletest/advanced.html)
+explains many powerful Googletest features.
+One useful topic is
+[how to run just some of the tests](https://google.github.io/googletest/advanced.html#running-test-programs-advanced-options).

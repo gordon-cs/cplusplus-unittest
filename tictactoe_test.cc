@@ -3,7 +3,7 @@
 // Author (starting point): Russ Tuck
 // Authors (everything else):
 
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 #include <iostream>
 using std::cout;
 using std::endl;
