@@ -15,13 +15,17 @@ So a goal of this example is to get you started as easily as possible.
 (Special note: be sure that no directory in the path to your repo contains
 a space.  If it does, Bazel will complain with anerror message and quit.)
 1. Run this command:
+
         bazel test :all
+
     It will download a lot of stuff (over 700MB, including Googletest)
     the first time (a little like npm install),
     but should eventually print something like
+
         //:hello_test                           PASSED
         //:tictactoe_test                       PASSED
         INFO: Build completed successfully, XX total actions
+
     If you run it again, it should be very fast.
 
 If you have trouble, consult GoogleTest's [Quickstart: Building with Bazel]
