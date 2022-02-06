@@ -64,5 +64,5 @@ but you should also read the
 You won't need to consult it right away, but the lengthy
 [Advanced googletest Topics](https://google.github.io/googletest/advanced.html)
 explains many powerful Googletest features.
-One useful topic is [how to run just some of the tests]
-(https://google.github.io/googletest/advanced.html#running-test-programs-advanced-options).
+One useful topic is
+[how to run just some of the tests](https://google.github.io/googletest/advanced.html#running-test-programs-advanced-options).
