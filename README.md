@@ -1,8 +1,11 @@
 # cplusplus-unittest
-Example of a simple C++ unit test using the Google Test framework.
+This repo is an example of writing and running simple C++ unit tests
+using the Google Test framework.
 
-You'll also want to read the [Googletest Primer](https://google.github.io/googletest/primer.html)
-for help writing your own unit tests.
+This README explains how to get started,
+how to build programs with Bazel,
+and how to write unit tests
+(mostly with references to appropriate documentation).
 
 ## Setup Bazel to build and run tests
 Googletest is probably easiest to use with Bazel,
@@ -26,7 +29,7 @@ a space.  If it does, Bazel will complain with anerror message and quit.)
         //:tictactoe_test                       PASSED
         INFO: Build completed successfully, XX total actions
 
-    If you run it again, it should be very fast.
+    When you run it again, it should be very fast.
     If you run it again without changing any files,
     it will print "(cached) PASSED"
     to indicate that it didn't need to do anything.
@@ -46,13 +49,27 @@ Then look at these [example C++ rules]
 (https://github.com/bazelbuild/bazel/blob/master/examples/cpp/BUILD)
 and the BUILD file in this repo to get some practical insight.
 
+That might be all you need to get started.
+But you should read
 
+    [Bazel Tutorial: Build a C++ Project]
+    (https://docs.bazel.build/versions/5.0.0/tutorial/cpp.html)
 
+to get a better understanding for larger projects.
+Consult
 
-## Advanced GoogleTest Features
-You won't need to consult it right away, but the
-lengthy [Advanced googletest Topics]
-(https://google.github.io/googletest/advanced.html)
+    [Common C++ Build Use Cases]
+    (https://docs.bazel.build/versions/5.0.0/cpp-use-cases.html)
+
+for more details as you need to do new things.
+
+### Unit Tests
+You can get started by imitating the tests in tictactoe_test.cc,
+but you should also read the
+[Googletest Primer](https://google.github.io/googletest/primer.html).
+
+You won't need to consult it right away, but the lengthy
+[Advanced googletest Topics](https://google.github.io/googletest/advanced.html)
 explains many powerful Googletest features.
 One useful topic is [how to run just some of the tests]
 (https://google.github.io/googletest/advanced.html#running-test-programs-advanced-options).
