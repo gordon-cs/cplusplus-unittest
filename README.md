@@ -27,6 +27,9 @@ a space.  If it does, Bazel will complain with anerror message and quit.)
         INFO: Build completed successfully, XX total actions
 
     If you run it again, it should be very fast.
+    If you run it again without changing any files,
+    it will print "(cached) PASSED"
+    to indicate that it didn't need to do anything.
 
 If you have trouble, consult GoogleTest's [Quickstart: Building with Bazel]
 (https://google.github.io/googletest/quickstart-bazel.html).
