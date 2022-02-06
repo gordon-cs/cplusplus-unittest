@@ -45,22 +45,15 @@ and writing unit tests.
 
 ### Bazel Rules
 Start by reading this brief [Bazel Overview](https://docs.bazel.build/versions/5.0.0/bazel-overview.html).
-Then look at these [example C++ rules]
-(https://github.com/bazelbuild/bazel/blob/master/examples/cpp/BUILD)
+Then look at these
+[example C++ rules](https://github.com/bazelbuild/bazel/blob/master/examples/cpp/BUILD)
 and the BUILD file in this repo to get some practical insight.
 
 That might be all you need to get started.
 But you should read
-
-    [Bazel Tutorial: Build a C++ Project]
-    (https://docs.bazel.build/versions/5.0.0/tutorial/cpp.html)
-
-to get a better understanding for larger projects.
-Consult
-
-    [Common C++ Build Use Cases]
-    (https://docs.bazel.build/versions/5.0.0/cpp-use-cases.html)
-
+[Bazel Tutorial: Build a C++ Project](https://docs.bazel.build/versions/5.0.0/tutorial/cpp.html)
+to get a better understanding for larger projects.  Consult
+[Common C++ Build Use Cases](https://docs.bazel.build/versions/5.0.0/cpp-use-cases.html)
 for more details as you need to do new things.
 
 ### Unit Tests
