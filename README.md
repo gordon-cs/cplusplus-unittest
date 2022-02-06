@@ -13,7 +13,35 @@ which is a build system Google developed and supports.
 While it's a very powerful system, it's more complicated than Make.
 So a goal of this example is to get you started as easily as possible.
 
-1. Install Bazel: Follow [these instructions](https://docs.bazel.build/versions/5.0.0/install.html) for your operating system.  (See note below about the Linux  Lab workstations.)
+1. Install Bazel: Follow
+[these instructions](https://docs.bazel.build/versions/5.0.0/install.html)
+for your operating system.
+
+    * On Windows, consider whether you develop in Windows itself (probably
+      using git-bash), or in WSL.  If you do your coding in WSL,
+      follow the Linux install instructions for Bazel.  There are several
+      options, and I found "Using Bazel's apt repository" worked well.
+
+        If you do your coding in Windows itself, then you can probably skip the
+        "Install the prerequisites," step in the Windows instructions,
+        since you have C++ working already.
+        Also, when you go to the Bazel website, scroll down to the "Latest"
+        version (skipping all the "pre-", or pre-release versions), then
+        keep going to the "Assets" section.  You probably want
+        "bazel-5.0.0-windows-x86_64.exe".
+
+        Note that this file is
+        the actual program, not the installer, which is why the instructions
+        say to rename it and put it in your path.
+
+    * On Mac, I recommend the "Homebrew" option.  If you already have
+      Homebrew installed, it's just one command: "brew install bazel".
+      (And if you don't, it's just one command to install homebrew first.)
+
+    * On the Linux workstations.  I intend to install it, but haven't yet.
+      If you don't want to wait, try the "Using the binary installer"
+      method, because it doesn't require sudo privileges.
+
 1. Clone this repo and cd into it.
 (Special note: be sure that no directory in the path to your repo contains
 a space.  If it does, Bazel will complain with anerror message and quit.)
