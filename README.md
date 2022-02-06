@@ -34,8 +34,8 @@ a space.  If it does, Bazel will complain with anerror message and quit.)
     it will print "(cached) PASSED"
     to indicate that it didn't need to do anything.
 
-If you have trouble, consult GoogleTest's [Quickstart: Building with Bazel]
-(https://google.github.io/googletest/quickstart-bazel.html).
+If you have trouble, consult GoogleTest's
+[Quickstart: Building with Bazel](https://google.github.io/googletest/quickstart-bazel.html).
 
 
 ## Compiling and Running Your Own Unit Tests
