@@ -20,6 +20,7 @@ a space.  If it does, Bazel will complain with anerror message and quit.)
     the first time (a little like npm install),
     but should eventually print something like
         //:hello_test                           PASSED
+        //:tictactoe_test                       PASSED
         INFO: Build completed successfully, XX total actions
     If you run it again, it should be very fast.
 
@@ -32,10 +33,19 @@ If you have trouble, consult GoogleTest's [Quickstart: Building with Bazel]
 There are two parts to this: building your code with Bazel,
 and writing unit tests.
 
+### Bazel Rules
+Start by reading this brief [Bazel Overview](https://docs.bazel.build/versions/5.0.0/bazel-overview.html).
+Then look at these [example C++ rules]
+(https://github.com/bazelbuild/bazel/blob/master/examples/cpp/BUILD)
+and the BUILD file in this repo to get some practical insight.
 
 
-## Advanced Use
+
+
+## Advanced GoogleTest Features
 You won't need to consult it right away, but the
-lengthy [Advanced googletest Topics](https://google.github.io/googletest/advanced.html) explains how to many powerful things.
+lengthy [Advanced googletest Topics]
+(https://google.github.io/googletest/advanced.html)
+explains many powerful Googletest features.
 One useful topic is [how to run just some of the tests]
 (https://google.github.io/googletest/advanced.html#running-test-programs-advanced-options).
