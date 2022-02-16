@@ -44,11 +44,11 @@ for your operating system.
       Started](https://github.com/gordon-cs/gordon-360-ui#getting-started)
       instructions.  Briefly (assuming nothing has changed):
 
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-	# (then close the terminal and open another to update the path)
-	nvm install --lts
-	nvm use --lts
-	npm install -g @bazel/bazelisk
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+            # (then close the terminal and open another to update the path)
+            nvm install --lts
+            nvm use --lts
+            npm install -g @bazel/bazelisk
 
 1. Clone this repo and cd into it.
 (Special note: be sure that no directory in the path to your repo contains
