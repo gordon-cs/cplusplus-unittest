@@ -36,11 +36,19 @@ for your operating system.
 
     * On Mac, I recommend the "Homebrew" option.  If you already have
       Homebrew installed, it's just one command: "brew install bazel".
-      (And if you don't, it's just one command to install homebrew first.)
+      (And if you don't, it's just one command to install homebrew first.
 
-    * On the Linux workstations.  I intend to install it, but haven't yet.
-      If you don't want to wait, try the "Using the binary installer"
-      method, because it doesn't require sudo privileges.
+    * For Linux, including the lab workstations, here is my recommendation
+      (which I have tested).  Use the recommended "bazelisk" approach, which
+      requires npm.  Get npm via nvm, following these [Gordon 360 Getting
+      Started](https://github.com/gordon-cs/gordon-360-ui#getting-started)
+      instructions.  Briefly (assuming nothing has changed):
+
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+	# (then close the terminal and open another to update the path)
+	nvm install --lts
+	nvm use --lts
+	npm install -g @bazel/bazelisk
 
 1. Clone this repo and cd into it.
 (Special note: be sure that no directory in the path to your repo contains
