@@ -15,7 +15,7 @@ So a goal of this example is to get you started as easily as possible.
 
 1. Install Bazel: Follow
 [these instructions](https://docs.bazel.build/versions/5.0.0/install.html)
-for your operating system.
+for your operating system.  The following notes may help.
 
     * On Windows, consider whether you develop in Windows itself (probably
       using git-bash), or in WSL.  If you do your coding in WSL,
