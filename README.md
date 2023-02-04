@@ -38,18 +38,6 @@ for your operating system.  The following notes may help.
       Homebrew installed, it's just one command: "brew install bazel".
       (And if you don't, it's just one command to install homebrew first.
 
-    * For Linux versions before and including 18.04, here is my recommendation
-      (which I have tested).  Use the recommended "bazelisk" approach, which
-      requires npm.  Get npm via nvm, following these [Gordon 360 Getting
-      Started](https://github.com/gordon-cs/gordon-360-ui#getting-started)
-      instructions.  Briefly (assuming nothing has changed):
-
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-            # (then close the terminal and open another to update the path)
-            nvm install --lts
-            nvm use --lts
-            npm install -g @bazel/bazelisk
-    
     * For Linux versions greater than 18.04, bazel 4.2.0 will have to be
       used as follows:
 
@@ -60,6 +48,18 @@ for your operating system.  The following notes may help.
             sudo apt update && sudo apt install bazel-4.2.0
             
             sudo ln /bin/bazel-4.2.0 /bin/bazel
+            
+    * For Linux versions before and including 18.04, 
+      use the recommended "bazelisk" approach, which
+      requires npm.  Get npm via nvm, following these [Gordon 360 Getting
+      Started](https://github.com/gordon-cs/gordon-360-ui#getting-started)
+      instructions.  Briefly (assuming nothing has changed):
+
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+            # (then close the terminal and open another to update the path)
+            nvm install --lts
+            nvm use --lts
+            npm install -g @bazel/bazelisk
 
 1. Clone this repo and cd into it.
 (Special note: be sure that no directory in the path to your repo contains
