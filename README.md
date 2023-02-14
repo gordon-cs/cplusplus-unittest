@@ -15,7 +15,7 @@ So a goal of this example is to get you started as easily as possible.
 
 1. Install Bazel: Follow
 [these instructions](https://docs.bazel.build/versions/5.0.0/install.html)
-for your operating system.
+for your operating system.  The following notes may help.
 
     * On Windows, consider whether you develop in Windows itself (probably
       using git-bash), or in WSL.  If you do your coding in WSL,
@@ -36,11 +36,30 @@ for your operating system.
 
     * On Mac, I recommend the "Homebrew" option.  If you already have
       Homebrew installed, it's just one command: "brew install bazel".
-      (And if you don't, it's just one command to install homebrew first.)
+      (And if you don't, it's just one command to install homebrew first.
 
-    * On the Linux workstations.  I intend to install it, but haven't yet.
-      If you don't want to wait, try the "Using the binary installer"
-      method, because it doesn't require sudo privileges.
+    * For Linux versions greater than 18.04, bazel 4.2.0 will have to be
+      used as follows:
+
+            sudo apt install apt-transport-https curl gnupg
+            curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+            echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+            
+            sudo apt update && sudo apt install bazel-4.2.0
+            
+            sudo ln /bin/bazel-4.2.0 /bin/bazel
+            
+    * For Linux versions before and including 18.04, 
+      use the recommended "bazelisk" approach, which
+      requires npm.  Get npm via nvm, following these [Gordon 360 Getting
+      Started](https://github.com/gordon-cs/gordon-360-ui#getting-started)
+      instructions.  Briefly (assuming nothing has changed):
+
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+            # (then close the terminal and open another to update the path)
+            nvm install --lts
+            nvm use --lts
+            npm install -g @bazel/bazelisk
 
 1. Clone this repo and cd into it.
 (Special note: be sure that no directory in the path to your repo contains
