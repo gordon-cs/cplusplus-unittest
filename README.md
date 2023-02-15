@@ -36,20 +36,9 @@ for your operating system.  The following notes may help.
 
     * On Mac, I recommend the "Homebrew" option.  If you already have
       Homebrew installed, it's just one command: "brew install bazel".
-      (And if you don't, it's just one command to install homebrew first.
-
-    * For Linux versions greater than 18.04, bazel 4.2.0 will have to be
-      used as follows:
-
-            sudo apt install apt-transport-https curl gnupg
-            curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
-            echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+      (And if you don't, it's just one command to install homebrew first.)
             
-            sudo apt update && sudo apt install bazel-4.2.0
-            
-            sudo ln /bin/bazel-4.2.0 /bin/bazel
-            
-    * For Linux versions before and including 18.04, 
+    * For Linux, including the lab workstatios, 
       use the recommended "bazelisk" approach, which
       requires npm.  Get npm via nvm, following these [Gordon 360 Getting
       Started](https://github.com/gordon-cs/gordon-360-ui#getting-started)
@@ -63,7 +52,7 @@ for your operating system.  The following notes may help.
 
 1. Clone this repo and cd into it.
 (Special note: be sure that no directory in the path to your repo contains
-a space.  If it does, Bazel will complain with anerror message and quit.)
+a space.  If it does, Bazel will complain with an error message and quit.)
 1. Run this command:
 
         bazel test :all
