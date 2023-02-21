@@ -1,7 +1,7 @@
 # Advanced Topics
 ## Updating Googletest
-Bazel and Googletest follows Google's internal philosphy of 
-always running from "head", but building hermetically 
+Bazel and Googletest follow Google's internal philosphy of 
+always running from "head", and building hermetically 
 so builds are completely reproducible.  
 But outside Google, it's not as easy to automatically stay
 up to date.
