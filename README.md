@@ -14,56 +14,83 @@ While it's a very powerful system, it's more complicated than Make.
 So a goal of this example is to get you started as easily as possible.
 
 1. Install Bazel: Follow
-[these instructions](https://docs.bazel.build/versions/5.0.0/install.html)
-for your operating system.  The following notes may help.
+   [these instructions](https://docs.bazel.build/versions/5.0.0/install.html)
+   for your operating system.  The following notes may help.
 
-    * On Windows, consider whether you develop in Windows itself (probably
-      using git-bash), or in WSL.  If you do your coding in WSL,
-      follow the Linux install instructions for Bazel.  There are several
-      options, and I found "Using Bazel's apt repository" worked well.
+   1. On **Windows**, consider whether you want to develop natively on Windows 
+      (probably using git-bash), or in WSL.  *It's a lot simpler to use WSL.*
+      
+      **WSL**: If you do your coding in WSL,
+      follow the instructions for Linux, below.
 
-        If you do your coding in Windows itself, then you can probably skip the
-        "Install the prerequisites," step in the Windows instructions,
-        since you have C++ working already.
-        Also, when you go to the Bazel website, scroll down to the "Latest"
-        version (skipping all the "pre-", or pre-release versions), then
-        keep going to the "Assets" section.  You probably want
-        "bazel-5.0.0-windows-x86_64.exe".
+      **Windows (native)**: If you do your coding in Windows itself, 
+      then you can probably skip the
+      "Install the prerequisites," step in the Windows instructions,
+      since you have C++ working already.
+      Also, when you go to the Bazel website, scroll down to the "Latest"
+      version (skipping all the "pre-", or pre-release versions), then
+      keep going to the "Assets" section.  You probably want
+      "bazel-5.0.0-windows-x86_64.exe".
 
-        Note that this file is
-        the actual program, not the installer, which is why the instructions
-        say to rename it and put it in your path.
+      Note that this file is
+      the actual program, not the installer, which is why the instructions
+      say to rename it and put it in your path.
+      When you finish, `bazel --version` should work.
 
-    * On Mac, I recommend the "Homebrew" option.  If you already have
-      Homebrew installed, it's just one command: "brew install bazel".
-      (And if you don't, it's just one command to install homebrew first.
+   2. On **MacOS**, I recommend the "Homebrew" option.  If you already have
+      Homebrew installed, it's just one command: `brew install bazel`.
+      (And if you don't, it's just one command to install homebrew first.)
+      When you finish, `bazel --version` should work.
+      
+      **On newer versions of MacOS, that's all you need to do.  However, 
+      if brew says your MacOS version is too old, the rest of this section
+      might help.**
+      
+      Note: On some older versions of MacOS, "brew install bazel" fails, 
+      or the resulting bazel install doesn't work.  The rest of this section applies only
+      In this case, try using nvm, similarly to Linux.  Start with
 
-    * For Linux versions greater than 18.04, bazel 4.2.0 will have to be
-      used as follows:
+            brew install nvm
 
-            sudo apt install apt-transport-https curl gnupg
-            curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
-            echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+      If `which nvm` returns a path, then you are ready for the next 
+      set of commands. Otherwise, follow the instructions printed by
+      brew about what to add to your `~/.bash_profile` file (creating
+      it if it doesn't already exist).  You may also need to create 
+      a symlink with `cd ~/.nvm; ln -s nvm-exec nvm` and add ~/.nvm
+      to your path by adding this line to ~/.bash_profile:
+      `export PATH=$PATH:$HOME/.nvm`.  
+      Then type `source ~/.bash_profile`.
+      Now `which nvm` should return a path.
+      
+      Now that you've installed nvm, continue with:
+
+            nvm install --lts
+            nvm use --lts
+            npm install -g @bazel/bazelisk
             
-            sudo apt update && sudo apt install bazel-4.2.0
+      Now `bazel --version` should work.
             
-            sudo ln /bin/bazel-4.2.0 /bin/bazel
+   3. On **Linux** (for example, on the lab workstations, and in WSL on Windows), 
+      use the recommended "bazelisk" approach, which requires npm.  Get npm via nvm. 
+      Briefly (assuming nothing has changed), install nvm with this command:
+      
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
             
-    * For Linux versions before and including 18.04, 
-      use the recommended "bazelisk" approach, which
-      requires npm.  Get npm via nvm, following these [Gordon 360 Getting
-      Started](https://github.com/gordon-cs/gordon-360-ui#getting-started)
-      instructions.  Briefly (assuming nothing has changed):
+      Now close the terminal window and open another one, to update the path.
+      Now `nvm --version` should work. (If you have trouble installing nvm, 
+      [these instructions](https://github.com/nvm-sh/nvm#installing-and-updating) may help.)
+      
+      Now, use nvm to install npm, and then npm to install bazel:
 
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-            # (then close the terminal and open another to update the path)
             nvm install --lts
             nvm use --lts
             npm install -g @bazel/bazelisk
 
+      Now `bazel --version` should work.
+
 1. Clone this repo and cd into it.
 (Special note: be sure that no directory in the path to your repo contains
-a space.  If it does, Bazel will complain with anerror message and quit.)
+a space.  If it does, Bazel will complain with an error message and quit.)
 1. Run this command:
 
         bazel test :all
