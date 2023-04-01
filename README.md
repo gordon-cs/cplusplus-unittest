@@ -140,3 +140,6 @@ You won't need to consult it right away, but the lengthy
 explains many powerful Googletest features.
 One useful topic is
 [how to run just some of the tests](https://google.github.io/googletest/advanced.html#running-test-programs-advanced-options).
+
+## Using Visual Studio Code (VSCode)
+This [helpful blog](https://shanee.io/blog/2019/05/28/bazel-with-visual-studio-code/) explains how to use Bazel from VSCode.
